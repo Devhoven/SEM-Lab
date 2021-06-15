@@ -1,2 +1,2 @@
 # SEM-Lab
-This is a GUI for the DSM 940 A SEM
+This is a GUI which works with the DSM 940 A SEM
