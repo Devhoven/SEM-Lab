@@ -28,21 +28,19 @@ class WelcomePage(Page):
 
     def __init__(self, mainWindow):
         super().__init__(mainWindow)
+        self.setCommitPage(True)
 
     def setStyle(self):
         super().setStyle()
 
-        vertLayout = QVBoxLayout(self)
-
+        vertLayout = QVBoxLayout()
+        vertLayout.setContentsMargins(20, 20, 20, 20)
         font = QFont()
-        font.setPointSize(15)
 
         font.setPointSize(13)
-
-        self.languageLabel = QLabel()
-        self.languageLabel.setFont(font)
-        vertLayout.addWidget(self.languageLabel)
-        vertLayout.setAlignment(self.languageLabel, Qt.AlignTop)
+        headlineLabel = QLabel(translate("Headline"))
+        headlineLabel.setFont(font)
+        vertLayout.addWidget(headlineLabel)
 
         font.setPointSize(10)
 
@@ -68,9 +66,7 @@ class WelcomePage(Page):
         self.pathLineEdit.setMinimumHeight(40)
         vertLayout.addWidget(self.pathLineEdit)
 
-        spacer = QSpacerItem(1, 1, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        vertLayout.addSpacerItem(spacer)
-
+        self.setLayout(vertLayout)
 
 # Responsible for the right driver settings
 class DriverPage(Page):

@@ -1,9 +1,10 @@
 Code;English;Deutsch
-WindowTitle;SEM GUI Setup;REM GUI Setup
-SEMCheckboxText;SEM GUI;REM GUI
-CamCheckboxText;Cam driver;Cam treiber
-LiveFeedCheckboxText;Live feed grabber driver;Live feed grabber treiber
-PathText;Path;Pfad
+WindowTitle;SEM Lab Installer;SEM Lab Installer
+Headline;Which of the following software should be installed?;Welcher der folgenen Softwares soll installiert werden?
+SEMCheckboxText;SEM Lab;SEM Lab
+CamCheckboxText;Terratec AV350 Driver Setup;Terratec AV350 Treiber Setup
+LiveFeedCheckboxText;Terratec AV350 MX Driver Setup;Terratec AV350 MX Treiber Setup
+PathText;Path:;Pfad:
 DriverBtnText;Driver;Treiber
 NextBtnText;Next;Weiter
 BackBtnText;Back;Zurück
