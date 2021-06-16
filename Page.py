@@ -1,7 +1,6 @@
-import os
-import subprocess
 from main import *
 from PIL import Image
+from Threads import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -80,6 +79,32 @@ class SoftwarePage(QWizardPage):
         self.pathDisplay.setText(QFileDialog.getExistingDirectory(self, "Select Directory"))
 
 
+class ProgressPage(QWizardPage):
+
+    def __init__(self, mainWindow):
+        super().__init__(mainWindow)
+
+        vertLayout = QVBoxLayout()
+
+        font = QFont()
+        font.setPointSize(12)
+
+        progressBarLabel = QLabel("Progress bar:")
+        progressBarLabel.setFont(font)
+        vertLayout.addWidget(progressBarLabel)
+        vertLayout.setAlignment(vertLayout, Qt.AlignHCenter)
+
+        self.progressBar = QProgressBar()
+        self.progressBar.setMaximum(100)
+        vertLayout.addWidget(self.progressBar)
+
+        self.setLayout(vertLayout)
+
+    def setProgress(self, percent):
+        self.progressBar.setValue(percent)
+
+
+
 # Responsible for the right driver settings
 class DriverPage(QWizardPage):
 
@@ -121,28 +146,3 @@ class DriverPage(QWizardPage):
     # Opens the properties image in the default system viewer
     def openImage(self):
         DriverImageThread(self).start()
-
-# Small subclass, which runs the ffmpeg driver dialog in parallel, since otherwise the QT-Application would be on halt
-class DriverThread(QThread):
-
-    def __init__(self, parent):
-        super().__init__(parent)
-
-    def run(self):
-        global dir
-        os.chdir(dir + "/assets")
-        subprocess.run(
-            ["ffmpeg", "-f", "dshow", "-show_video_device_dialog", "true", "-i", "video=CY3014 USB, Analog 01 Capture"])
-
-
-# Small subclass, which runs the default system viewer in parallel, since otherwise the Wizard would stop working,
-# until the viewer is closed again
-class DriverImageThread(QThread):
-
-    def __init__(self, parent):
-        super().__init__(parent)
-
-    def run(self):
-        global dir
-        img = Image.open(dir + '/assets/Properties.png')
-        img.show()

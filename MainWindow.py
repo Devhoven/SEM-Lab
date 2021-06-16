@@ -1,11 +1,12 @@
 import os
+import zipfile
 import subprocess
 from Page import *
 from main import *
-from PyQt5.QtWidgets import *
+from Threads import *
 import urllib.request
+from PyQt5.QtWidgets import *
 from urllib.request import urlretrieve
-import zipfile
 
 
 class MainWindow(QWizard):
@@ -19,10 +20,12 @@ class MainWindow(QWizard):
 
         welcomePage = WelcomePage(self)
         self.softwarePage = SoftwarePage(self)
+        self.progressPage = ProgressPage(self)
         self.driverPage = DriverPage(self)
 
         self.addPage(welcomePage)
         self.addPage(self.softwarePage)
+        self.addPage(self.progressPage)
         self.addPage(self.driverPage)
 
         self.button(QWizard.CommitButton).clicked.connect(self.onCommit)
@@ -46,17 +49,9 @@ class MainWindow(QWizard):
             subprocess.call(["LiveGrabber"], shell=True)
 
         if self.softwarePage.guiCheck.isChecked():
-            # Downloads the zip from github
-            path = self.softwarePage.pathDisplay.text()
-            urllib.request.urlretrieve("https://github.com/Devhoven/SEM-Lab/releases/download/1.0/SEM.Lab.zip",
-                                       path + "/SEM-Lab.zip")
-
-            # Unpacks the zip to the folder
-            with zipfile.ZipFile(path + "/SEM-Lab.zip", 'r') as zip_ref:
-                zip_ref.extractall(path)
-
-            # Deletes the file again
-            os.remove(path + "/SEM-Lab.zip")
+            downloadThread = DownloadThread(self, self.softwarePage.pathDisplay.text())
+            downloadThread.progressChanged.connect(self.progressPage.setProgress)
+            downloadThread.start()
 
 
     def keyPressEvent(self, event):
