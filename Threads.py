@@ -1,19 +1,16 @@
-import numpy as np
 import os
 import zipfile
+import requests
 import subprocess
 from main import *
+import numpy as np
+from PIL import Image
 import urllib.request
 from PyQt5.QtCore import *
-from tqdm import tqdm
-import requests
 
 
 # Small subclass, which runs the ffmpeg driver dialog in parallel, since otherwise the QT-Application would be on halt
 class DriverThread(QThread):
-
-    def __init__(self, parent):
-        super().__init__(parent)
 
     def run(self):
         global dir
@@ -25,9 +22,6 @@ class DriverThread(QThread):
 # Small subclass, which runs the default system viewer in parallel, since otherwise the Wizard would stop working,
 # until the viewer is closed again
 class DriverImageThread(QThread):
-
-    def __init__(self, parent):
-        super().__init__(parent)
 
     def run(self):
         global dir
@@ -54,7 +48,6 @@ class DownloadThread(QThread):
         # Streaming, so we can iterate over the response.
         response = requests.get(url, stream=True)
         total_size_in_bytes = int(response.headers.get('content-length', 0))
-        print(total_size_in_bytes)
         block_size = 2048  # 2 Kibibytes
         count = 0
         with open(path + "/SEM-Lab.zip", 'wb') as file:

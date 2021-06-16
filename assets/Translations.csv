@@ -15,3 +15,4 @@ SelectFolderText;Select Folder;Ordner auswählen
 ManualText;Set the Video Input to Composite and the Scale Type to FIT, so the image is going to be displayed properly;Stellen Sie den Video Input auf Composite und den Scale Type auf FIT, sodass das Livebild richtig angezeigt wird
 OpenImageText;Show driver settings template;Zeige die richtigen Treibereintsellungen
 DriverPageHeadlineText;You can set the right driver settings here;Hier können Sie die richtigen Treibereinstellungen setzen
+ProgressBarText;Download Progress:;Download Fortschritt:

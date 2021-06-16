@@ -1,12 +1,9 @@
 import os
-import zipfile
 import subprocess
 from Page import *
 from main import *
 from Threads import *
-import urllib.request
 from PyQt5.QtWidgets import *
-from urllib.request import urlretrieve
 
 
 class MainWindow(QWizard):

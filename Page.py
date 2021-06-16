@@ -89,7 +89,7 @@ class ProgressPage(QWizardPage):
         font = QFont()
         font.setPointSize(12)
 
-        progressBarLabel = QLabel("Progress bar:")
+        progressBarLabel = QLabel(translate("ProgressBarText"))
         progressBarLabel.setFont(font)
         vertLayout.addWidget(progressBarLabel)
         vertLayout.setAlignment(vertLayout, Qt.AlignHCenter)
