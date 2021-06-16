@@ -1,12 +1,17 @@
 Code;English;Deutsch
+WelcomeMessage;This is the installer for the SEM Lab Software;Das ist der Installer für die SEM Lab Software
 WindowTitle;SEM Lab Installer;SEM Lab Installer
-Headline;Which of the following software should be installed?;Welcher der folgenen Softwares soll installiert werden?
+Headline;Select which software should be installed;Wählen Sie aus welche Software installiert werden soll
 SEMCheckboxText;SEM Lab;SEM Lab
-CamCheckboxText;Terratec AV350 Driver Setup;Terratec AV350 Treiber Setup
-LiveFeedCheckboxText;Terratec AV350 MX Driver Setup;Terratec AV350 MX Treiber Setup
-PathText;Path:;Pfad:
-DriverBtnText;Driver;Treiber
+CamCheckboxText;Startech.com CY3014 Driver (Live Image);Startech.com CY3014 Treiber (Live Bild)
+LiveFeedCheckboxText;Terratec AV350 MX Driver (Probe Cam);Terratec AV350 MX Treiber (Proben Kamera)
+PathText;Select the folder where the SEM Lab should be installed:;Wählen Sie den Ordner aus wo das SEM Lab installiert werden soll:
+DriverBtnText;Open Driver;Treiber öffnen
 NextBtnText;Next;Weiter
 BackBtnText;Back;Zurück
 FinishBtnText;Finish;Beenden
 CancelBtnText;Cancel;Abbrechen
+SelectFolderText;Select Folder;Ordner auswählen
+ManualText;Set the Video Input to Composite and the Scale Type to FIT, so the image is going to be displayed properly;Stellen Sie den Video Input auf Composite und den Scale Type auf FIT, sodass das Livebild richtig angezeigt wird
+OpenImageText;Show driver settings template;Zeige die richtigen Treibereintsellungen
+DriverPageHeadlineText;You can set the right driver settings here;Hier können Sie die richtigen Treibereinstellungen setzen

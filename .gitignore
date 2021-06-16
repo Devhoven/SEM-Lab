@@ -1,1 +1,9 @@
 .idea
+.build
+.dist
+SEM-Lab-Installer.spec
+SEM-Lab-Installer-OneFile.spec
+__pycache__/Page.cpython-38.pyc
+__pycache__/MainWindow.cpython-38.pyc
+__pycache__/Page.cpython-38.pyc
+*.pyc

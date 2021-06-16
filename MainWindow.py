@@ -15,11 +15,14 @@ class MainWindow(QWizard):
 
         self.setWizardStyle(QWizard.ClassicStyle)
         self.setWindowTitle(translate("WindowTitle"))
-        self.setMinimumSize(950, 500)
+        self.setWindowIcon(QIcon("assets/Icon.png"))
 
-        self.welcomePage = WelcomePage(self)
-        self.addPage(self.welcomePage)
+        welcomePage = WelcomePage(self)
+        self.softwarePage = SoftwarePage(self)
         self.driverPage = DriverPage(self)
+
+        self.addPage(welcomePage)
+        self.addPage(self.softwarePage)
         self.addPage(self.driverPage)
 
         self.button(QWizard.CommitButton).clicked.connect(self.onCommit)
@@ -27,8 +30,9 @@ class MainWindow(QWizard):
         self.setButtonText(QWizard.BackButton, "<" + translate("BackBtnText"))
         self.setButtonText(QWizard.FinishButton, translate("FinishBtnText"))
         self.setButtonText(QWizard.CancelButton, translate("CancelBtnText"))
+        self.setButtonText(QWizard.CommitButton, "Install")
 
-        self.showNormal()
+        self.show()
 
 
     # Executes the setups if the boxes are checked
@@ -36,14 +40,14 @@ class MainWindow(QWizard):
     def onCommit(self):
         global dir
         os.chdir(dir + "/assets")
-        if self.welcomePage.camDriverCheck.isChecked():
+        if self.softwarePage.camDriverCheck.isChecked():
             subprocess.run(["CamGrabber"])
-        if self.welcomePage.liveFeedDriverCheck.isChecked():
+        if self.softwarePage.liveFeedDriverCheck.isChecked():
             subprocess.call(["LiveGrabber"], shell=True)
 
-        if self.welcomePage.guiCheck.isChecked():
+        if self.softwarePage.guiCheck.isChecked():
             # Downloads the zip from github
-            path = self.welcomePage.pathLineEdit.text()
+            path = self.softwarePage.pathDisplay.text()
             urllib.request.urlretrieve("https://github.com/Devhoven/SEM-Lab/releases/download/1.0/SEM.Lab.zip",
                                        path + "/SEM-Lab.zip")
 
