@@ -52,6 +52,7 @@ class App(QMainWindow):
         self.addAction(self.viewMenu, translate("PhotoMode"), "2", lambda: self.uiContainer.changeModeTo(1))
         self.addAction(self.viewMenu, translate("FullScreenPhoto"), "a", self.toggleFullPhoto)
 
+        self.addAction(self.helpMenu, "README", "r", self.openREADME)
         self.addAction(self.helpMenu, translate("Manual"), "m", self.openManual)
         self.addAction(self.helpMenu, translate("KeyboardImg"), "k", self.openKeyboardImg)
 
@@ -165,6 +166,11 @@ class App(QMainWindow):
     def openManual(self):
         global dir
         os.startfile(os.path.join(dir, 'assets', 'Manual.pdf'), "open")
+
+    # Opens the manual in the default system viewer
+    def openREADME(self):
+        global dir
+        os.startfile(os.path.join(dir, 'assets', 'Readme.pdf'), "open")
 
     # Opens the keyboard image in the fullPhotoMode
     def openKeyboardImg(self):
