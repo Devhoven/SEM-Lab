@@ -104,10 +104,15 @@ class CroppingReadingThread(CroppingThread):
             result += digit[4].format(int(self.getNumber(treshImg, digit[0], digit[1], digit[2]) * digit[3]))
 
         strip = self.cropImg(treshImg, 684, 42, 1, 442)
-        # A one pixel wide stripe is cut out of the image, it is used to get the percentage of the scanning process
-        n_white_pix = cv2.countNonZero(strip)
-        percentage = int((n_white_pix / 442) * 100)
 
+        # A one pixel wide stripe is cut out of the image, it is used to get the percentage of the scanning process
+        whitePixelCount = cv2.countNonZero(strip)
+        # Did this, since for some reason, the strip is sometimes on 684 and sometimes on 684
+        whitePixelCount2 = cv2.countNonZero(self.cropImg(treshImg, 685, 42, 1, 442))
+        if whitePixelCount2 > whitePixelCount:
+            whitePixelCount = whitePixelCount2
+
+        percentage = int((whitePixelCount / 442) * 100)
         # If a new step is reached, it is telling the rest of the program
         if percentage > self.percentage or percentage == 0:
             setPercentage(percentage)

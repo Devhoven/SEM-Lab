@@ -1,1 +1,4 @@
 .idea
+SEM-Lab-Installer.spec
+*.pyc
+Threads/__pycache__/RIThread.cpython-38.pyc

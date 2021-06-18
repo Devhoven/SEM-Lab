@@ -254,9 +254,9 @@ class PhotoMode(QWidget):
 
     # Sets all of the metadata values
     def setMetadataValues(self, spotSizeVal, coarseVal, currentVal, voltageVal, focusVal):
-        self.spotSizeWidget.reset()
         self.spotSizeWidget.setValue(spotSizeVal)
 
+        self.coarseWidget.reset()
         self.coarseWidget.setValue(coarseVal)
 
         self.currentWidget.setValue(currentVal)
@@ -320,9 +320,9 @@ class PhotoMode(QWidget):
 
             metadata.add_text("IsREMImage", "1")
 
-            metadata.add_text("SpotSize", self.spotSizeWidget.getValue())
+            metadata.add_text("SpotSize", str(self.spotSizeWidget.getValue()))
 
-            metadata.add_text("Coarse", str(self.coarseWidget.getValue()))
+            metadata.add_text("Coarse", self.coarseWidget.getValue())
 
             metadata.add_text("Current", self.currentWidget.getValue())
 

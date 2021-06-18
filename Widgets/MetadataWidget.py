@@ -28,94 +28,94 @@ class MetadataWidget(QWidget):
         pass
 
 
-class SpotSizeWidget(MetadataWidget):
+class CoarseWidget(MetadataWidget):
 
     def __init__(self, parent):
-        super().__init__(parent, "SpotSize")
+        super().__init__(parent, "Coarse")
 
-        spotSizeWidget = QWidget(parent)
-        spotSizeWidget.setStyleSheet("border: 0;")
-        self.spotSizeBtnGroup = QButtonGroup(spotSizeWidget)
-        spotSizeLayout = QHBoxLayout(spotSizeWidget)
+        coarseWidget = QWidget(parent)
+        coarseWidget.setStyleSheet("border: 0;")
+        self.coarseBtnGroup = QButtonGroup(coarseWidget)
+        coarseLayout = QHBoxLayout(coarseWidget)
 
-        self.spotSizeLargeBtn = QRadioButton("Large")
-        spotSizeLayout.addWidget(self.spotSizeLargeBtn)
-        self.spotSizeBtnGroup.addButton(self.spotSizeLargeBtn)
-        self.spotSizeMedBtn = QRadioButton("Medium")
-        spotSizeLayout.addWidget(self.spotSizeMedBtn)
-        self.spotSizeBtnGroup.addButton(self.spotSizeMedBtn)
-        self.spotSizeSmallBtn = QRadioButton("Small")
-        spotSizeLayout.addWidget(self.spotSizeSmallBtn)
-        self.spotSizeBtnGroup.addButton(self.spotSizeSmallBtn)
+        self.coarseLargeBtn = QRadioButton("Large")
+        coarseLayout.addWidget(self.coarseLargeBtn)
+        self.coarseBtnGroup.addButton(self.coarseLargeBtn)
+        self.coarseMedBtn = QRadioButton("Medium")
+        coarseLayout.addWidget(self.coarseMedBtn)
+        self.coarseBtnGroup.addButton(self.coarseMedBtn)
+        self.coarseSmallBtn = QRadioButton("Small")
+        coarseLayout.addWidget(self.coarseSmallBtn)
+        self.coarseBtnGroup.addButton(self.coarseSmallBtn)
 
-        self.layout.addWidget(spotSizeWidget)
+        self.layout.addWidget(coarseWidget)
 
     def getValue(self):
-        if self.spotSizeLargeBtn.isChecked():
+        if self.coarseLargeBtn.isChecked():
             return "0"
-        elif self.spotSizeMedBtn.isChecked():
+        elif self.coarseMedBtn.isChecked():
             return "1"
-        elif self.spotSizeSmallBtn.isChecked():
+        elif self.coarseSmallBtn.isChecked():
             return "2"
         return "-1"
 
     def setValue(self, value):
         if value == "0":
-            self.spotSizeLargeBtn.setChecked(True)
+            self.coarseLargeBtn.setChecked(True)
         elif value == "1":
-            self.spotSizeMedBtn.setChecked(True)
+            self.coarseMedBtn.setChecked(True)
         elif value == "2":
-            self.spotSizeSmallBtn.setChecked(True)
+            self.coarseSmallBtn.setChecked(True)
 
     def reset(self):
-        self.spotSizeBtnGroup.setExclusive(False)
-        self.spotSizeLargeBtn.setChecked(False)
-        self.spotSizeMedBtn.setChecked(False)
-        self.spotSizeSmallBtn.setChecked(False)
-        self.spotSizeBtnGroup.setExclusive(True)
+        self.coarseBtnGroup.setExclusive(False)
+        self.coarseLargeBtn.setChecked(False)
+        self.coarseMedBtn.setChecked(False)
+        self.coarseSmallBtn.setChecked(False)
+        self.coarseBtnGroup.setExclusive(True)
 
 
-class CoarseWidget(MetadataWidget):
+class SpotSizeWidget(MetadataWidget):
 
     def __init__(self, parent):
-        super(CoarseWidget, self).__init__(parent, "Coarse")
+        super(SpotSizeWidget, self).__init__(parent, "SpotSize")
 
         self.valueChanged = False
 
-        self.coarseSlider = QSlider(Qt.Horizontal)
-        self.coarseSlider.setMinimum(1)
-        self.coarseSlider.setMaximum(16)
-        self.coarseSlider.valueChanged.connect(self.valueChange)
-        self.coarseSlider.setTickPosition(QSlider.TicksBelow)
-        self.layout.addWidget(self.coarseSlider)
+        self.spotSizeSlider = QSlider(Qt.Horizontal)
+        self.spotSizeSlider.setMinimum(1)
+        self.spotSizeSlider.setMaximum(16)
+        self.spotSizeSlider.valueChanged.connect(self.valueChange)
+        self.spotSizeSlider.setTickPosition(QSlider.TicksBelow)
+        self.layout.addWidget(self.spotSizeSlider)
 
-        coarseLayout = QHBoxLayout()
+        spotSizeLayout = QHBoxLayout()
 
         minLabel = QLabel("1")
-        coarseLayout.addWidget(minLabel)
+        spotSizeLayout.addWidget(minLabel)
         maxLabel = QLabel("16")
-        coarseLayout.addWidget(maxLabel)
-        coarseLayout.setAlignment(maxLabel, Qt.AlignRight)
+        spotSizeLayout.addWidget(maxLabel)
+        spotSizeLayout.setAlignment(maxLabel, Qt.AlignRight)
 
-        self.layout.addLayout(coarseLayout)
+        self.layout.addLayout(spotSizeLayout)
 
     def valueChange(self):
         self.valueChanged = True
-        self.label.setText("Coarse" + " (" + str(self.coarseSlider.value()) + ")")
+        self.label.setText("SpotSize" + " (" + str(self.spotSizeSlider.value()) + ")")
 
     def setValue(self, value):
         if value == "-1":
-            self.coarseSlider.setValue(1)
+            self.spotSizeSlider.setValue(1)
             self.valueChanged = False
-            self.label.setText("Coarse")
+            self.label.setText("SpotSize")
             return
 
-        self.coarseSlider.setValue(int(value))
+        self.spotSizeSlider.setValue(int(value))
 
     def getValue(self):
         if self.valueChanged:
-            return self.coarseSlider.value()
-        return -1;
+            return self.spotSizeSlider.value()
+        return -1
 
 
 class CurrentWidget(MetadataWidget):
