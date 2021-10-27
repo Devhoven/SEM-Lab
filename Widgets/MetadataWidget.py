@@ -137,7 +137,7 @@ class CurrentWidget(MetadataWidget):
 class VoltageWidget(MetadataWidget):
 
     def __init__(self, parent):
-        super().__init__(parent, "Voltage")
+        super().__init__(parent, "Collector Voltage")
 
         voltageWidget = QWidget(parent)
         voltageWidget.setStyleSheet("border: 0;")
@@ -176,7 +176,7 @@ class VoltageWidget(MetadataWidget):
 class FocusWidget(MetadataWidget):
 
     def __init__(self, parent):
-        super().__init__(parent, "Focus")
+        super().__init__(parent, "Dyn. Focus")
 
         focusWidget = QWidget(parent)
         focusWidget.setStyleSheet("border: 0;")

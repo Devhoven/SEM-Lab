@@ -198,7 +198,7 @@ class MeasureStreamWidget(StreamWidget):
             painter.drawText(self.innerPoint.x(), self.innerPoint.y() + 20, self.getDist(self.distance(self.innerPoint, self.outerPoint)))
 
         painter.drawLine(self.innerPoint.x(), self.innerPoint.y(),
-                         self.outerPoint.x(), self.outerPoint.y());
+                         self.outerPoint.x(), self.outerPoint.y())
 
     def drawRect(self, painter):
         painter.drawRect(self.innerPoint.x(), self.innerPoint.y(),

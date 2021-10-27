@@ -89,7 +89,11 @@ class PhotoMode(QWidget):
         metadataCon.setMinimumSize(QSize(210 * scalingFactor, 0))
         metadataCon.setMaximumSize(QSize(210 * scalingFactor, 16777215))
         metadataCon.setStyleSheet(
-            ".QPushButton { margin-top: 5; margin-bottom: 5; height: " + str(30 * scalingFactor) + "; }")
+            ".QPushButton { margin-top: 5; margin-bottom: 5; height: " + str(30 * scalingFactor) + "; }"
+            ".QLineEdit { border: 2px solid black; margin-right: 5px; }"
+            ".QRadioButton::indicator:unchecked { background-color: darkgray; border-radius: 7px; }"
+            ".QRadioButton::indicator:checked { background-color: #162936; "
+                                               "border-radius: 7px; border: 2.5px solid darkgray; }")
         metadataConLayout = QVBoxLayout()
         metadataCon.setLayout(metadataConLayout)
 
@@ -225,6 +229,7 @@ class PhotoMode(QWidget):
         rollUpBtn.setText(translate("RollUp"))
         rollDownBtn.setText(translate("RollDown"))
         squishBtn.setText("Squish")
+        squishBtn.setToolTip(translate("SquishToolTip"))
 
         rollUpBtn.clicked.connect(lambda: self.rollUpImage())
         rollDownBtn.clicked.connect(lambda: self.rollDownImage())
@@ -329,6 +334,9 @@ class PhotoMode(QWidget):
             metadata.add_text("Voltage", self.voltageWidget.getValue())
 
             metadata.add_text("Focus", self.focusWidget.getValue())
+
+            # xD
+            metadata.add_text("EdgeLength", self.uiContainer.liveMode.liveFeedCon.getDist(2048));
 
             im.save(self.uiContainer.path, pnginfo=metadata)
             self.uiContainer.updateCapCon()

@@ -5,7 +5,7 @@ LiveMode;Operation mode;Arbeitsmodus
 PhotoMode;Acquisition mode;Aufnahmemodus
 FullScreenPhoto;Fullscreen Photo View;Nur das Foto anzeigen
 Settings;Settings;Einstellungen
-Manual;Manual;Bedienungsanleitung
+Manual;User Manual;Bedienungsanleitung
 KeyboardImg;Keyboard Layout;Tastaturbelegung
 Close;Close;Schließen
 Blur;Blur;Blur
@@ -50,3 +50,4 @@ MeasureRectAction;Measure with a rectangle;Mit einem Reckteck messen
 MeasureCircleAction;Measure with a circle;Mit einem Kreis messen
 VideoProcAmpInformation;If you alter the "Video Proc Amp"-Settings, reliable text detection cannot be guranteed;Wenn Sie die "Video Proc Amp"-Settings verändern, kann es dazu führen, dass die Texterkennung der Livedaten nicht mehr richtig funktioniert
 SEMPort;SEM Port;REM Port
+SquishToolTip;Since the recorded image is not perfectly square, you can "squish" it to countereffect that;Die Geometrie in dem aufgenommenen Bild ist nicht 1:1, sondern etwas gestreckt, durch den Button wird das Bild zusammengedrückt, was das Seitenverhältnis wieder auf 1:1 setzt
