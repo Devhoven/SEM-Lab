@@ -11,7 +11,7 @@ sys.argv += ['--style', 'Fusion']
 
 # The GUI is natively written for a 1920x1080 Display
 # If you set this scaling Factor to another value than one you can scale it to the target display size
-scalingFactor = 1
+scalingFactor = 2
 
 # dir saves the path to the current project location
 dir = os.path.dirname(__file__)
