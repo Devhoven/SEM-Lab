@@ -32,8 +32,8 @@ After successfully capturing an image, it can be saved using the "Save Image"-bu
 If an image has been saved, it is going to appear in the Image-panel, along all of the other images which are located in the same folder, which has been chosen. <br><br>
 Beneath that, is the "Image-Spaw-Repair"-panel. <br>
 The "Swap Up"-button and "Swap Down"-button are used for "repairing" the recently captured image, since sometimes a bug occures, where the image gets stretched in some odd pattern, which can be fixed with either of the buttons. <a href="https://user-images.githubusercontent.com/40501092/122522560-63f83180-d016-11eb-9fd5-3c449747a33b.png"> Example </a> <br><br>
-The "Squish"-button is used to "squish" the image, since it is shifted in a way, which makes it not perfectly square. <br>
-This distortion won't be noticed under normal circumstances and is fine in almost all cases, but if you want the exactly right dimensions, you can use the "Squish"-button to fix that. <a href="https://user-images.githubusercontent.com/40501092/122523529-69a24700-d017-11eb-884b-cdec01528045.png"> Example </a> <br><br>
+The SEM does not scan the image completely linearly, which causes a distortion in the result.
+This distortion won't be noticed under normal circumstances and is fine in almost all cases, but if you want more accurate dimensions, you can use the "Squish"-button to get a more "square" image Example. <a href="https://user-images.githubusercontent.com/40501092/122523529-69a24700-d017-11eb-884b-cdec01528045.png"> Example </a> <br><br>
 
 ## Full Photo View:
 There actually is a third mode, the <a href="https://user-images.githubusercontent.com/40501092/122532910-47adc200-d021-11eb-8993-2279dd2a181f.png"> Full Photo View</a>. <br><br>
