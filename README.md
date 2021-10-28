@@ -25,7 +25,8 @@ On the lower left-hand side the specimen chamber is displayed for observation pu
 The Acquisition Mode is used to acquire the actual image in high resolution for documentation purposes.  <br>
 
 On the first panel all of the settings of the SEM, which have been used to capture the current image, can be put in. If the image is saved, all this data is going to be saved as metadata in the image file. <br>
-Those can be viewed in the PNG-metadata, or can be opened in the picture with a click on the saved image on the right-hand side Images-panel and the metadata is going to be displayed along the image. <br><br>
+Those can be viewed in the PNG-metadata, or can be opened in the picture with a click on the saved image on the right-hand side Images-panel and the metadata is going to be displayed along the image. <br>
+The metadata of the image can also be viewed via any exif reader tool f.e.: https://www.metadata2go.com <br><br>
 Below that is the "Image aquisition"-panel. <br>
 To capture an image, the "Capture Image"-button has to be used. The capturing will be guided with instructions that are shown at the bottom of the panel. <br>
 After successfully capturing an image, it can be saved using the "Save Image"-button. <br>
@@ -33,7 +34,7 @@ If an image has been saved, it is going to appear in the Image-panel, along all 
 Beneath that, is the "Image-Spaw-Repair"-panel. <br>
 The "Swap Up"-button and "Swap Down"-button are used for "repairing" the recently captured image, since sometimes a bug occures, where the image gets stretched in some odd pattern, which can be fixed with either of the buttons. <a href="https://user-images.githubusercontent.com/40501092/122522560-63f83180-d016-11eb-9fd5-3c449747a33b.png"> Example </a> <br><br>
 The SEM does not scan the image completely linearly, which causes a distortion in the result.
-This distortion won't be noticed under normal circumstances and is fine in almost all cases, but if you want more accurate dimensions, you can use the "Squish"-button to get a more "square" image Example. <a href="https://user-images.githubusercontent.com/40501092/122523529-69a24700-d017-11eb-884b-cdec01528045.png"> Example </a> <br><br>
+This distortion won't be noticed under normal circumstances and is fine in almost all cases, but if you want more accurate dimensions, you can use the "Squish"-button to get a more "square" image. <a href="https://user-images.githubusercontent.com/40501092/122523529-69a24700-d017-11eb-884b-cdec01528045.png"> Example </a> <br><br>
 
 ## Full Photo View:
 There actually is a third mode, the <a href="https://user-images.githubusercontent.com/40501092/122532910-47adc200-d021-11eb-8993-2279dd2a181f.png"> Full Photo View</a>. <br><br>
