@@ -91,9 +91,9 @@ class PhotoMode(QWidget):
         metadataCon.setStyleSheet(
             ".QPushButton { margin-top: 5; margin-bottom: 5; height: " + str(30 * scalingFactor) + "; }"
             ".QLineEdit { border: 2px solid black; margin-right: 5px; }"
-            ".QRadioButton::indicator:unchecked { background-color: darkgray; border-radius: 7px; }"
+            ".QRadioButton::indicator:unchecked { background-color: darkgray; border-radius: " + str(7 * scalingFactor) + "px; }"
             ".QRadioButton::indicator:checked { background-color: #162936; "
-                                               "border-radius: 7px; border: 2.5px solid darkgray; }")
+                                               "border-radius: " + str(7 * scalingFactor) + "px; border: " + str(2.5 * scalingFactor) + "px solid darkgray; }")
         metadataConLayout = QVBoxLayout()
         metadataCon.setLayout(metadataConLayout)
 
@@ -335,8 +335,14 @@ class PhotoMode(QWidget):
 
             metadata.add_text("Focus", self.focusWidget.getValue())
 
-            # xD
-            metadata.add_text("EdgeLength", self.uiContainer.liveMode.liveFeedCon.getDist(2048));
+            if not self.imageSaved:
+                # xD
+                metadata.add_text("EdgeLength", self.uiContainer.liveMode.liveFeedCon.getDist(1024))
+
+                liveInfo = self.uiContainer.liveMode.camInfoLabel.text()
+                liveInfoSplit = liveInfo.split('\n')
+                metadata.add_text("High Voltage",     liveInfoSplit[2])
+                metadata.add_text("Working distance", liveInfoSplit[6])
 
             im.save(self.uiContainer.path, pnginfo=metadata)
             self.uiContainer.updateCapCon()

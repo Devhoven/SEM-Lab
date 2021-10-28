@@ -237,9 +237,9 @@ class MeasureStreamWidget(StreamWidget):
 
     # Calculates the real distance and formats it correctly
     def getDist(self, distance):
-        distance = (distance * ((90000 / self.magnification) / 510) * 510 / 1962)
+        distance = distance / self.magnification * 90_000 / 1962
 
-        if (distance > 1000):
+        if distance > 1000:
             return str(round(distance / 1000, 2)) + " mm"
         else:
             return str(round(distance, 1)) + " μm"

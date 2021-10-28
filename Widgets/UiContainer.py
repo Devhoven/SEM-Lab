@@ -55,9 +55,9 @@ class UiContainer(QWidget):
         # The first two parameters are the position, the third is the maximum digit count
         # The fourth is a factor which the result is getting multiplied with, before returned
         # The fifth is the final format in which the result should be presented
-        digits.append((575, 42, 2, 1, "\nHigh Voltage:\n{} kv\n"))
+        digits.append((575, 42,  2, 1,    "\nHigh Voltage:\n{} kv\n"))
         digits.append((575, 122, 6, 9.08, "Magnification:\n{}\n"))
-        digits.append((575, 74, 2, 1, "Working Distance:\n{} mm"))
+        digits.append((575, 74,  2, 1,    "Working Distance:\n{} mm"))
         # Should not be changed, since the measuring relies on it
 
         self.liveFeedThread = CroppingReadingThread(0, "CY3014 USB, Analog 01 Capture", 720, 576,
