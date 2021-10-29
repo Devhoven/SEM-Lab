@@ -237,10 +237,21 @@ class MeasureStreamWidget(StreamWidget):
 
     # Calculates the real distance and formats it correctly
     def getDist(self, distance):
-        distance = distance / self.magnification * 90_000 / 1962
+        # Right here we are normalizing the coordinates
+        # * 510, since that is the width and height of the original frame
+        distance = int((distance * 510) / self.frameGeometry().width())
+        # Checking if the maginification is 0, otherwise the program would crash
+        # Only happens if the SEM hasn't started yet
+        if self.magnification == 0:
+            return "-1"
+
+        # 181.8181818181 is a factor which was calculated with a calibration grid on the microscope
+        distance = distance / self.magnification * 181.8181818181
 
         if distance > 1000:
             return str(round(distance / 1000, 2)) + " mm"
         else:
             return str(round(distance, 1)) + " μm"
 
+    def getEdgeLength(self):
+        return self.getDist(self.frameGeometry().width())

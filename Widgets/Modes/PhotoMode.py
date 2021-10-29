@@ -337,7 +337,7 @@ class PhotoMode(QWidget):
 
             if not self.imageSaved:
                 # xD
-                metadata.add_text("EdgeLength", self.uiContainer.liveMode.liveFeedCon.getDist(1024))
+                metadata.add_text("EdgeLength", self.uiContainer.liveMode.liveFeedCon.getEdgeLength())
 
                 liveInfo = self.uiContainer.liveMode.camInfoLabel.text()
                 liveInfoSplit = liveInfo.split('\n')
