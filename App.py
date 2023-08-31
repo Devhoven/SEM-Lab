@@ -45,7 +45,7 @@ class App(QMainWindow):
         self.helpMenu = self.bar.addMenu(translate("HelpBarName"))
 
         self.addAction(self.programMenu, translate("Settings"), "e", self.openSettings)
-        self.addAction(self.programMenu, translate("Close"), "ESC", self.close)
+        self.addAction(self.programMenu, translate("Close"), "ALT+F4", self.close)
 
         self.addAction(self.viewMenu, translate("FullScreen"), "F1", self.toggleWindowState)
         self.addAction(self.viewMenu, translate("LiveMode"), "1", lambda: self.uiContainer.changeModeTo(0))
