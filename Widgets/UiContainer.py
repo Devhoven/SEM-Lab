@@ -158,9 +158,9 @@ class UiContainer(QWidget):
 
     # A new capture is added to the capture panel
     def addCapture(self, file):
-        img = Image.open(file)
-        img.load()
         try:
+            img = Image.open(file)
+            img.load()
             if img.info['IsREMImage'] == "1":
                 newPic = CaptureLabel(self.prevCapCon)
                 newPic.setImage(file, img, self.prevCapCon.width())
