@@ -9,6 +9,7 @@ from PIL.ImageQt import ImageQt
 from Widgets.ImageViewer import *
 from Widgets.StreamWidget import *
 from Widgets.MetadataWidget import *
+from Widgets.SettingsDialog import *
 from PIL.PngImagePlugin import PngImageFile, PngInfo
 
 class PhotoMode(QWidget):
@@ -272,9 +273,17 @@ class PhotoMode(QWidget):
         self.focusWidget.reset()
         self.focusWidget.setValue(focusVal)
 
-    def updateImageREM(self, newImage):
-        self.updateImage(newImage)
-        self.imageSaved = False
+    def updateImageREM(self, newImgInfo):
+        if newImgInfo[0]:
+            self.updateImage(newImgInfo[1])
+            self.imageSaved = False
+        else:
+            errorDialog = QErrorMessage()
+            errorDialog.setWindowTitle(translate("NoPortInfoTitle"))
+            errorDialog.showMessage(translate("NoPortInfo"))
+            errorDialog.exec()
+            self.setInfo(translate("ReadyForImg"))
+            self.riThread.close()
 
     def updateImage(self, newImage):
         self.checkImageSaved()

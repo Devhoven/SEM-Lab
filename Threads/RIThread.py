@@ -6,7 +6,7 @@ from ReadImage import getImage
 
 class ReadImageThread(QThread):
 
-    imageLoaded = pyqtSignal(np.ndarray)
+    imageLoaded = pyqtSignal(tuple)
     updateInfo = pyqtSignal(str)
 
     def __init__(self):

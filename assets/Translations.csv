@@ -23,7 +23,8 @@ ReadyForImg;Ready to take an image;Bereit ein Bild aufzunehmen
 ImgNotSavedInfo;The newly captured image isn't saved, are you sure you want to override it?;Das neu aufgenommene Bild wurde noch nicht gespeichert, sind Sie sicher, dass Sie es überschreiben wollen?
 PressBtnInfo;Press the "On Line" Button;Drücken Sie auf den "On Line" Button
 ImgRdyInfo;The image is ready;Das Bild wurde fertig verarbeitet
-NoPortInfo;Port is not available;Dieser Port ist nicht verfügbar
+NoPortInfo;Port is not available - please change it in the settings (Program -> Settings -> SEM Port);Port ist nicht verfügbar - Port bitte in den Einstellungen ändern (Programm -> Einstellungen -> REM Port)
+NoPortInfoTitle;Warning - Wrong port;Warnung - Falscher Port
 ReceiveDataInfo;Receiving Data from the REM {}%;Die Daten werden vom REM empfangen {}%
 ProcessingDataInfo;Processing the received Data {}%;Die Daten werden verarbeitet {}%
 DeleteImg;Delete Image;Bild löschen

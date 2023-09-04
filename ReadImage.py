@@ -1,4 +1,5 @@
 import cv2
+import time
 import serial
 from main import *
 import numpy as np
@@ -12,19 +13,23 @@ def setPercentage(newPercentage):
 
 
 def getImage(updateInfoSignal):
-    if port:
-        return readImageFromList(updateInfoSignal, readImageFromREM(updateInfoSignal))
-    else:
-        errorDialog = QErrorMessage()
-        errorDialog.showMessage(translate("NoPortInfo"))
-        errorDialog.exec()
-        errorPixmap = QPixmap(2084, 2084)
-        return errorPixmap
+    try:
+        remData = readImageFromREM(updateInfoSignal)
+    except serial.SerialTimeoutException:
+        updateInfoSignal.emit("SerialTimeoutException")
+        return False, None
+    except serial.SerialException:
+        updateInfoSignal.emit("SerialException")
+        return False, None
+
+    return True, readImageFromList(updateInfoSignal, remData)
 
 
 def readImageFromREM(updateInfoSignal):
     global percentage
+    # Timeout has to be set to zero, otherwise the processing won't work
     ser = serial.Serial(port, baudrate, timeout=0)
+
     sr = bytearray()
     lst = []
 
@@ -32,6 +37,7 @@ def readImageFromREM(updateInfoSignal):
 
     while not wasNotZero or percentage != 0:
         sr.extend(ser.read(bytelength))
+
         if len(sr) >= 200:
 
             updateInfoSignal.emit(translate("ReceiveDataInfo").format(percentage))
@@ -95,7 +101,7 @@ def getPixelData(d, h_shift, v_shift):
     return h, v, p
 
 
-port = "COM4"
+port = settings.value("Port", "")
 size = 2048
 percentage = 0
 baudrate = 11000000
